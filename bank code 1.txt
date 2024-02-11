@@ -1,0 +1,255 @@
+#include <stdio.h>
+#include <string.h>
+//#include <iostream>
+// using namespace std;
+struct bank
+{
+    int acc_no;
+    char name[500];
+    float balance;
+};
+int n, m = 0, i;
+int main()
+{
+    int op;
+    struct bank data[250];
+    printf("enter the customer no\n");
+    scanf("%d", &n);
+    void input_data(struct bank data[], int n);
+    void min_balance(struct bank data[], int n);
+    void request_withdrawal(struct bank data[], int n, int m);
+    void request_deposit(struct bank data[], int n, int m);
+    void input_data_add(struct bank data[], int n, int m);
+    void check_acc(struct bank data[], int n, int m, int transfer_acc);
+    void transfer_money(struct bank data[], int n, int m);
+    void check_balance(struct bank data[], int n, int m);
+    void manipulate_money(struct bank data[], int n, int m, int transfer_acc1, int transfer_acc2, int amount_tran);
+    input_data(data, n);
+    min_balance(data, n);
+    while (1)
+    {
+        printf("Enter 0. withdrawal 1. deposit 2. Add New Account 3.Transfer Money 4. check balance \n");
+        scanf("%d", &op);
+        switch (op)
+        {
+        case 0:
+            request_withdrawal(data, n, m);
+            break;
+        case 1:
+            request_deposit(data, n, m);
+            break;
+        case 2:
+            printf("How much you Add new accont\n");
+            scanf("%d", &m);
+            input_data_add(data, n, m);
+            break;
+        case 3:
+            transfer_money(data, n, m);
+            break;
+        case 4:
+            check_balance(data, n, m);
+            break;
+        }
+    }
+}
+void input_data(struct bank data[], int n)
+{
+    for (int j = 0; j < n; j++)
+    {
+
+        printf("enter account no\n");
+        scanf("%d", &data[j].acc_no);
+        printf(" enter the customer name\n");
+        scanf("%s", &data[j].name);
+        printf("enter your balance\n");
+        scanf("%f", &data[j].balance);
+        printf("--------------------------------------------------------------------\n");
+    }
+}
+void min_balance(struct bank data[], int n)
+{
+    {
+        if (data[i].balance < 100)
+        {
+            printf("===balance below 100 rupay===\n\n");
+
+            printf("Account No =%d\n", data[i].acc_no);
+            printf("Name of Account holder = %s", data[i].name);
+            printf("\n");
+            printf("Account balance =%f\n", data[i].balance);
+            printf("--------------------------------------------------------------------\n");
+        }
+    }
+}
+void request_withdrawal(struct bank data[], int n, int m)
+{
+    printf("=== Withdrawal form ===\n");
+    int r_account;
+    float r_withdrawl;
+    printf("Enter your account no:\n");
+    scanf("%d", &r_account);
+    for (i = 0; i <= n + m; i++)
+    {
+        if (i < n + m)
+        {
+            if (r_account == data[i].acc_no)
+
+            {
+                printf("How much you want to withdrawal:\n");
+                scanf("%f", &r_withdrawl);
+                if (data[i].balance >= r_withdrawl)
+                {
+                    data[i].balance = data[i].balance - r_withdrawl;
+                    printf("Remaining amount in your balance is %.2f\n", data[i].balance);
+                    printf("Your cash withdrawal successsfully... !\n");
+                    printf("Thank You......Visit Again");
+                    printf("\n-------------------------------------------------------------------\n");
+                    break;
+                }
+                else
+                {
+                    printf("your amount is insufficint for withdrawal\n");
+                    printf("Thank You......Visit Again");
+                    printf("\n-------------------------------------------------------------------\n");
+                    break;
+                }
+            }
+        }
+        else
+        {
+            printf("Enter corret Account No.\n");
+            printf("Thank You......Visit Again");
+            printf("\n-------------------------------------------------------------------\n");
+        }
+    }
+}
+void request_deposit(struct bank data[], int n, int m)
+{
+    printf("=== deposit form ===\n");
+    int r_account;
+    int r_deposit;
+    printf("Enter your account no:\n");
+    scanf("%d", &r_account);
+    for (i = 0; i <= n + m; i++)
+    {
+        if (i < n + m)
+        {
+            if (r_account == data[i].acc_no)
+            {
+                printf("How much amount you have to deposit:\n");
+                scanf("%d", &r_deposit);
+                data[i].balance = data[i].balance + r_deposit;
+                printf("Your Total balance is %.2f \n", data[i].balance);
+                printf("Your cash deposit successsfully... !\n");
+                printf("Thank You......Visit Again");
+                printf("\n-------------------------------------------------------------------\n");
+                break;
+            }
+        }
+        else
+        {
+            printf("enter corret correct Account No.\n");
+            printf("Thank You......Visit Again");
+            printf("\n-------------------------------------------------------------------\n");
+        }
+    }
+}
+
+void input_data_add(struct bank data[], int n, int m)
+{
+    for (int j = n; j < n + m; j++)
+    {
+
+        printf("enter account no\n");
+        scanf("%d", &data[j].acc_no);
+        printf(" enter the customer name\n");
+        scanf("%s", &data[j].name);
+        printf("enter your balance\n");
+        scanf("%f", &data[j].balance);
+        printf("--------------------------------------------------------------------\n");
+    }
+}
+
+void transfer_money(struct bank data[], int n, int m)
+{
+    void manipulate_money(struct bank data[], int n, int m, int transfer_acc1, int transfer_acc2, int amount_tran);
+
+    int transfer_acc1, transfer_acc2, amount_tran;
+    printf("Enter Amount Receiver Account No\n  ");
+    scanf("%d", &transfer_acc1);
+    //  check_acc(data, n, m, transfer_acc1);
+    printf("Enter Amount sender Account No\n  ");
+    scanf("%d", &transfer_acc2);
+    printf("How much amount you have to transfer\n");
+    scanf("%d", &amount_tran);
+    manipulate_money(data, n, m, transfer_acc1, transfer_acc2, amount_tran);
+}
+
+// void check_acc(struct bank data[], int n, int m, int transfer_acc)
+// {
+//     for (i = 0; i < n + m; i++)
+//     {
+//         if (transfer_acc == data[i].acc_no)
+//         {
+//         }
+//         else
+//         {
+//             printf("Enter correct Account No\n");
+//         }
+//     }
+// }
+void manipulate_money(struct bank data[], int n, int m, int transfer_acc1, int transfer_acc2, int amount_tran)
+{
+    for (i = 0; i < n + m; i++)
+    {
+        if (transfer_acc1 == data[i].acc_no)
+        {
+            if (data[i].balance >= amount_tran)
+            {
+                data[i].balance = data[i].balance + amount_tran;
+                printf("Available balance of Account No. %d is %.2f \n ", data[i].acc_no, data[i].balance);
+                break;
+            }
+            else
+            {
+
+                printf("Available balance of Account No. %d is %.2f \n ", data[i].acc_no, data[i].balance);
+            }
+        }
+    }
+    for (i = 0; i < n + m; i++)
+    {
+        if (transfer_acc2 == data[i].acc_no)
+        {
+            if (data[i].balance >= amount_tran)
+            {
+                data[i].balance = data[i].balance - amount_tran;
+                printf("Available balance of Account No.  %d is %.2f \n", data[i].acc_no, data[i].balance);
+                break;
+            }
+            else
+            {
+                printf("your amount is insufficint for Trasction \n");
+                break;
+            }
+        }
+    }
+    printf("Thank You......Visit Again");
+    printf("\n-------------------------------------------------------------------\n");
+}
+
+void check_balance(struct bank data[], int n, int m)
+{
+    int check_bal;
+    printf("Enter your Account No.\n");
+    scanf("%d", &check_bal);
+    for (i = 0; i < n + m; i++)
+    {
+        if (check_bal == data[i].acc_no)
+        {
+            printf("Your Available Balance is %.2f\n", data[i].balance);
+        }
+    }
+    printf("Thank You......Visit Again");
+    printf("\n-------------------------------------------------------------------\n");
+}

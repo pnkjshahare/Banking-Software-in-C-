@@ -1,0 +1,15 @@
+All Account detail  :
+
+
+
+111		pnkj		5000.00		
+111		pnkj		5000.00		
+111		pankaj		10000.00		
+111		pnkj_shshare		5000.00		
+111		mgc		0.00		
+1222		OMD		330000.00		
+92071011		MAHI		3000.00		
+92071051		RAJESH		8000.00		
+92011021		SIYA		10000.00		
+111		pnkj		5000.00		
+555		pnkj		6000.00		
